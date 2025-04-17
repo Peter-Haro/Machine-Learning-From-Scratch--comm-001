@@ -34,6 +34,39 @@ but rather to present the inner workings of them in a transparent and accessible
     $ python setup.py install
 
 ## Examples
+## Linear Regression Example
+
+Here's a simple example of Linear Regression using scikit-learn:
+
+```python
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Sample data
+X = np.array([[1], [2], [3], [4], [5]])  # Independent variable
+y = np.array([1, 2, 3, 4, 5])            # Dependent variable
+
+# Create a Linear Regression model
+model = LinearRegression()
+
+# Fit the model
+model.fit(X, y)
+
+# Make predictions
+predictions = model.predict(X)
+
+print("Predictions:", predictions)
+
+#visualization
+plt.scatter(y,predictions)
+plt.xlabel("Actual values")
+plt.ylabel("Predicted values")
+plt.title("Actual vs Predicted")
+plt.plot([y.min(),y.max()],[y.min(),y.max()],color="red")
+plt.show()
+
 ### Polynomial Regression
     $ python mlfromscratch/examples/polynomial_regression.py
 
