@@ -5,7 +5,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import progressbar
 
-from sklearn.datasets import fetch_mldata
+from tensorflow.keras.datasets import mnist
+
+
+
 
 from mlfromscratch.deep_learning.optimizers import Adam
 from mlfromscratch.deep_learning.loss_functions import CrossEntropy
@@ -78,10 +81,9 @@ class GAN():
 
     def train(self, n_epochs, batch_size=128, save_interval=50):
 
-        mnist = fetch_mldata('MNIST original')
-
-        X = mnist.data
-        y = mnist.target
+        (X_train, _), (_, _) = mnist.load_data()
+        X = X_train.reshape(-1, 28*28).astype(np.float32)
+        X = (X - 127.5) / 127.5
 
         # Rescale [-1, 1]
         X = (X.astype(np.float32) - 127.5) / 127.5

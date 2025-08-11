@@ -142,7 +142,7 @@ def k_fold_cross_validation_sets(X, y, k, shuffle=True):
         np.append(sets[-1][0], left_overs["X"], axis=0)
         np.append(sets[-1][2], left_overs["y"], axis=0)
 
-    return np.array(sets)
+    return sets
 
 
 def to_categorical(x, n_col=None):
